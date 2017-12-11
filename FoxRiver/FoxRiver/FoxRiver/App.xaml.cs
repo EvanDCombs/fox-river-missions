@@ -13,8 +13,8 @@ namespace FoxRiver
 		{
 			InitializeComponent();
 
-			MainPage = new FoxRiver.MainPage();
-		}
+            MainPage = new NavigationPage(new FoxRiver.MainPage());
+        }
 
 		protected override void OnStart ()
 		{
