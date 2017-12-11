@@ -11,7 +11,12 @@ namespace FoxRiver
 	{
 		public MainPage()
 		{
-			InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            InitializeComponent();
 		}
-	}
+        async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DatabasePage());
+        }
+    }
 }

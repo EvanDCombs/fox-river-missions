@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:FoxRiver"
              x:Class="FoxRiver.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Button
+        Text="Next Page"
+        Clicked="Button_Clicked"/>
 
 </ContentPage>
