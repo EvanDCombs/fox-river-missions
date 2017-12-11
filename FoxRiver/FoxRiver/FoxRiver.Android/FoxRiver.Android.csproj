@@ -6,7 +6,7 @@
     <ProjectGuid>{B45EAAB2-0EE5-463C-B237-6C9D123C2BE9}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>FoxRiver.Droid</RootNamespace>
+    <RootNamespace>FoxRiver</RootNamespace>
     <AssemblyName>FoxRiver</AssemblyName>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>

@@ -4,7 +4,65 @@
              x:Class="FoxRiver.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <!-- Application resource dictionary -->
 
-	</Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Primary">#56C4C2</Color>
+            <Color x:Key="Primary_75">#BF56C4C2</Color>
+            <Color x:Key="Secondary">#003B4C</Color>
+            <Color x:Key="Secondary_60">#99003B4C</Color>
+            <Color x:Key="Secondary_75">#BF003B4C</Color>
+            <Color x:Key="Border">#A6A6A6</Color>
+            <Color x:Key="Transparent">#00000000</Color>
+            <Color x:Key="QuoteGray">#646464</Color>
+
+
+            <!--Application Styles-->
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
+            </Style>
+            <Style TargetType="Button" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource Transparent}"/>
+            </Style>
+
+
+            <!--Link Style-->
+            <Style x:Key="Link"  TargetType="Button" ApplyToDerivedTypes="True">
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+            </Style>
+
+
+            <!--Title Styles-->
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource Title}">
+                <Setter Property="FontSize" Value="36"/>
+            </Style>
+
+            <!--ContentBox Stlyes-->
+            <Style x:Key="BorderBox" TargetType="Frame">
+                <Setter Property="OutlineColor" Value="{StaticResource Border}"/>
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
+            <Style x:Key="ContentBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary_60}"/>
+            </Style>
+            <Style x:Key="ScriptureBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary_75}"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="CornerRadius" Value="1"/>
+            </Style>
+
+            <Style x:Key="ChildBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary_75}"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </Application>
