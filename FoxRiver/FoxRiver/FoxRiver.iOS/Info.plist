@@ -10,8 +10,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>11.2</string>
 	<key>CFBundleDisplayName</key>
-	<string>FoxRiver</string>
+	<string>Fox River Missions</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.FoxRiver</string>
+	<string>org.foxriver.missions</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
