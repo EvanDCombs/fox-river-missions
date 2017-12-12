@@ -21,6 +21,7 @@
       <DependentUpon>ChildView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DatabaseAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
       <SubType>Code</SubType>
