@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:local="clr-namespace:FoxRiver"
              x:Class="FoxRiver.DatabasePage">
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -46,7 +47,13 @@
                     <cv:CarouselViewControl
                         x:Name="ContentView"
                         VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                        <cv:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <local:ChildView/>
+                            </DataTemplate>
+                        </cv:CarouselViewControl.ItemTemplate>
                     </cv:CarouselViewControl>
 
                     <AbsoluteLayout 
@@ -54,8 +61,8 @@
                         HorizontalOptions="CenterAndExpand">
                         <AbsoluteLayout.Padding>
                             <OnIdiom x:TypeArguments="Thickness">
-                                <OnIdiom.Tablet>20,20,20,65</OnIdiom.Tablet>
-                                <OnIdiom.Phone>20,20,20,35</OnIdiom.Phone>
+                                <OnIdiom.Tablet>20,26,20,65</OnIdiom.Tablet>
+                                <OnIdiom.Phone>20,26,20,35</OnIdiom.Phone>
                             </OnIdiom>
                         </AbsoluteLayout.Padding>
                         <Frame Style="{StaticResource ScriptureBox}">

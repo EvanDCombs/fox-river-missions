@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FoxRiver"
+             x:Class="FoxRiver.ChildView"
+             BindingContext="local:Child">
+    <ContentView.Padding>
+        <OnIdiom x:TypeArguments="Thickness">
+            <OnIdiom.Tablet>50,26,50,0</OnIdiom.Tablet>
+            <OnIdiom.Phone>37,26,37,0</OnIdiom.Phone>
+        </OnIdiom>
+    </ContentView.Padding>
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Frame 
+                Style="{StaticResource ChildBox}"
+                Padding="5">
+                <AbsoluteLayout.LayoutFlags>
+                    <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
+                        <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
+                        <OnIdiom.Phone>All</OnIdiom.Phone>
+                    </OnIdiom>
+                </AbsoluteLayout.LayoutFlags>
+                <AbsoluteLayout.LayoutBounds>
+                    <OnIdiom x:TypeArguments="Rectangle">
+                        <OnIdiom.Tablet>0.5,0.5,475,600</OnIdiom.Tablet>
+                        <OnIdiom.Phone>0.5,0.5,1,1</OnIdiom.Phone>
+                    </OnIdiom>
+                </AbsoluteLayout.LayoutBounds>
+                <AbsoluteLayout>
+                    <Frame 
+                        Style="{StaticResource ChildBox}"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,1,.5">
+                        <Image x:Name="image"/>
+                    </Frame>
+                    <StackLayout
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,1,1,.5"
+                        Spacing="0">
+                        <Label 
+                            x:Name="name" 
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Text="{Binding Name}"
+                            Style="{StaticResource NamedText}"/>
+                        <Label 
+                            x:Name="school" 
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Center"
+                            Text="{Binding School}"
+                            Style="{StaticResource NamedText}"/>
+                        <Label 
+                            x:Name="content" 
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2"
+                            Text="Content"
+                            Style="{StaticResource NamedText}"/>
+                    </StackLayout>
+                </AbsoluteLayout>
+            </Frame>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>
