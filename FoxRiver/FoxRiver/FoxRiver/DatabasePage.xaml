@@ -26,7 +26,7 @@
                         AbsoluteLayout.LayoutFlags="All"
                         AbsoluteLayout.LayoutBounds=".5,.5,1,.6"
                         Text="KENYA"
-                        Style="{StaticResource Title}"/>
+                        Style="{StaticResource DatabaseTitle}"/>
                 </AbsoluteLayout>
                 <BoxView
                     HeightRequest="1"

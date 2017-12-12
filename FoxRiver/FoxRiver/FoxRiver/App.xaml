@@ -34,7 +34,7 @@
 
 
             <!--Title Styles-->
-            <Style x:Key="Title" TargetType="Label">
+            <Style x:Key="DatabaseTitle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="30"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
