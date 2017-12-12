@@ -42,6 +42,16 @@
             <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource Title}">
                 <Setter Property="FontSize" Value="36"/>
             </Style>
+            
+            <!--Text Styles-->
+            <Style x:Key="WhiteText" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="13"/>
+            </Style>
+            <Style x:Key="NamedText" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
 
             <!--ContentBox Stlyes-->
             <Style x:Key="BorderBox" TargetType="Frame">
