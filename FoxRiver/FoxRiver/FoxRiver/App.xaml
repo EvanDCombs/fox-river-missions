@@ -25,28 +25,62 @@
             <Style TargetType="Button" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{StaticResource Transparent}"/>
             </Style>
+            
+            <!--Text Style-->
+            <Style x:Key="ContentText" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>28</OnIdiom.Tablet>
+                            <OnIdiom.Phone>20</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
 
             <!--Link Style-->
             <Style x:Key="Link"  TargetType="Button" ApplyToDerivedTypes="True">
                 <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>28</OnIdiom.Tablet>
+                            <OnIdiom.Phone>20</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
 
             <!--Title Styles-->
             <Style x:Key="Title" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontSize" Value="60"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
             <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource Title}">
-                <Setter Property="FontSize" Value="36"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>70</OnIdiom.Tablet>
+                            <OnIdiom.Phone>40</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
             <!--ContentBox Stlyes-->
             <Style x:Key="BorderBox" TargetType="Frame">
                 <Setter Property="OutlineColor" Value="{StaticResource Border}"/>
                 <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
             </Style>
             <Style x:Key="ContentBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
                 <Setter Property="BackgroundColor" Value="{StaticResource Secondary_60}"/>

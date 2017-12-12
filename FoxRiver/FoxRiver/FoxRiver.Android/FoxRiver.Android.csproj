@@ -94,6 +94,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-sw600dp\database_background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\KenyaContent.html" />
+  </ItemGroup>
   <Import Project="..\FoxRiver\FoxRiver.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

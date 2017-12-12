@@ -139,6 +139,15 @@
     <ImageAsset Include="Resources\Media.xcassets\back.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\background_kenya.imageset\background_kenya.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\background_kenya.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\background_nicaragua.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Resources\Media.xcassets\database_background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -154,6 +163,9 @@
     <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\KenyaContent.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\FoxRiver\FoxRiver.projitems" Label="Shared" />
