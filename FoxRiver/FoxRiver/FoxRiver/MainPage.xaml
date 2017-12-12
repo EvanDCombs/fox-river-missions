@@ -15,8 +15,8 @@
                          BackgroundColor="Red">
                 <AbsoluteLayout.LayoutBounds>
                     <OnIdiom x:TypeArguments="Rectangle">
-                        <OnIdiom.Tablet>0,0,1,.9</OnIdiom.Tablet>
-                        <OnIdiom.Phone>0,0,1,.9</OnIdiom.Phone>
+                        <OnIdiom.Tablet>0,0,1,.1</OnIdiom.Tablet>
+                        <OnIdiom.Phone>0,0,1,.1</OnIdiom.Phone>
                     </OnIdiom>
                 </AbsoluteLayout.LayoutBounds>
                 <AbsoluteLayout Padding="-1,0,-1,0">
@@ -79,11 +79,11 @@
                          BackgroundColor="Orange">
                 <AbsoluteLayout.LayoutBounds>
                     <OnIdiom x:TypeArguments="Rectangle">
-                        <OnIdiom.Tablet>0,1,1,.1</OnIdiom.Tablet>
-                        <OnIdiom.Phone>0,1,1,.1</OnIdiom.Phone>
+                        <OnIdiom.Tablet>0,1,1,.9</OnIdiom.Tablet>
+                        <OnIdiom.Phone>0,1,1,.9</OnIdiom.Phone>
                     </OnIdiom>
                 </AbsoluteLayout.LayoutBounds>
-                <AbsoluteLayout>
+                <AbsoluteLayout Padding="-1,0,-1,0">
                     <Frame 
                         x:Name="BackgroundNicaragua"
                         AbsoluteLayout.LayoutFlags="All"
@@ -96,17 +96,38 @@
                     <Label
                         x:Name="TitleNicaragua"
                         AbsoluteLayout.LayoutFlags="All"
-                        AbsoluteLayout.LayoutBounds="0,0,0,0"
-                        Text="KENYA"
+                        AbsoluteLayout.LayoutBounds="0,0.05,1,.1"
+                        Text="NICARAGUA"
                         Style="{DynamicResource PrimaryTitle}"/>
                     <Frame 
                         x:Name="ContentNicaragua"
                         Style="{StaticResource ContentBox}"
-                        AbsoluteLayout.LayoutFlags="All"
-                        AbsoluteLayout.LayoutBounds="0,0,0,0">
-                        <StackLayout>
-                            <Label/>
-                            <Button/>
+                        Margin="20">
+                        <AbsoluteLayout.LayoutFlags>
+                            <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
+                                <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
+                                <OnIdiom.Phone>All</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutFlags>
+                        <AbsoluteLayout.LayoutBounds>
+                            <OnIdiom x:TypeArguments="Rectangle">
+                                <OnIdiom.Tablet>0.5,.9,460,460</OnIdiom.Tablet>
+                                <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutBounds>
+                        <StackLayout Padding="5">
+                            <Label 
+                                VerticalOptions="Start"
+                                Text="God has worked through Fox River and MANNA Worldwide to build a medical clinic in Las Esmeralda that serves hundreds of patients every month."
+                                Style="{StaticResource ContentText}"/>
+                            <AbsoluteLayout VerticalOptions="FillAndExpand">
+                                <Button 
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,.5,1,.5"
+                                    Text="Change a Life"
+                                    Style="{StaticResource Link}"
+                                    Clicked="ChangeALifeClicked"/>
+                            </AbsoluteLayout>
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
