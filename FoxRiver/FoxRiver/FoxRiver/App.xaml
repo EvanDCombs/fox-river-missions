@@ -62,6 +62,7 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="60"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>
             <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource Title}">
                 <Setter Property="FontAttributes" Value="Bold"/>
