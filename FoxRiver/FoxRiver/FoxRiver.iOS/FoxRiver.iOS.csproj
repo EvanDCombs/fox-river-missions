@@ -163,7 +163,19 @@
     <ImageAsset Include="Resources\Media.xcassets\database_background.imageset\database_background_iPad.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\down_arrow.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\down_arrow.imageset\down_arrow.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\up_arrow.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\up_arrow.imageset\up_arrow.pdf">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
