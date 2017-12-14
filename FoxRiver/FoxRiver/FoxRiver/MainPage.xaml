@@ -9,148 +9,145 @@
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <ScrollView 
-            x:Name="Scroll" 
-            Scrolled="Scroll_Scrolled">
-            <StackLayout Spacing="0">
-
-                <ContentView 
-                    x:Name="KenyaView"
-                    HorizontalOptions="FillAndExpand">
-                    <AbsoluteLayout Padding="-1,0,-1,-1">
-                        <Frame 
-                            x:Name="KenyaBackground"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                            Style="{StaticResource BorderBox}">
-                            <Image
-                                Source="background_kenya.png"
-                                Aspect="AspectFill"/>
-                        </Frame>
-                        <Label
-                            x:Name="KenyaTitle"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0.5,0.05,1,0.1"
-                            Text="KENYA"
-                            Style="{DynamicResource PrimaryTitle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+        <RelativeLayout>
+            <ContentView 
+                x:Name="KenyaView" 
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.875, Constant=0}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}">
+                <AbsoluteLayout Padding="-1,0,-1,0">
+                    <Frame 
+                        x:Name="KenyaBackground"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        Style="{StaticResource BorderBox}">
                         <Image
-                            x:Name="DownArrow"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0.5,0.1,0.1,0.1"
-                            Source="down_array.png"
-                            Aspect="AspectFit"
-                            Opacity="0"/>
-                        <Frame 
-                            x:Name="KenyaContent"
-                            Style="{StaticResource ContentBox}"
-                            Margin="20">
-                            <AbsoluteLayout.LayoutFlags>
-                                <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
-                                    <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
-                                    <OnIdiom.Phone>All</OnIdiom.Phone>
-                                </OnIdiom>
-                            </AbsoluteLayout.LayoutFlags>
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom x:TypeArguments="Rectangle">
-                                    <OnIdiom.Tablet>0.5,.9,460,460</OnIdiom.Tablet>
-                                    <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
-                                </OnIdiom>
-                            </AbsoluteLayout.LayoutBounds>
-                            <StackLayout Padding="5">
-                                <Label 
-                                    VerticalOptions="Start"
-                                    Text="Through Fox River and MANNA Worldwide, God is providing primary education and nutrition centers in the villages of&#10;Bomani and Vipingo"
-                                    Style="{StaticResource ContentText}"/>
-                                <AbsoluteLayout VerticalOptions="FillAndExpand">
-                                    <Button
-                                        AbsoluteLayout.LayoutFlags="All"
-                                        AbsoluteLayout.LayoutBounds="0,0,1,.5"
-                                        Text="Sponsor Children"
-                                        Style="{StaticResource Link}"
-                                        Clicked="SponsorChildrenClicked"/>
-                                    <Button 
-                                        AbsoluteLayout.LayoutFlags="All"
-                                        AbsoluteLayout.LayoutBounds="0,.75,1,.5"
-                                        Text="Change a Life"
-                                        Style="{StaticResource Link}"
-                                        Clicked="ChangeALifeClicked"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                    </AbsoluteLayout>
-                </ContentView>
-            
-                <ContentView 
-                    x:Name="NicaraguaView"
-                    HorizontalOptions="FillAndExpand">
-                    <AbsoluteLayout Padding="-1,0,-1,-1">
-                        <Frame 
-                            x:Name="NicaraguaBackground"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                            Style="{StaticResource BorderBox}"
-                            Opacity="0">
-                            <Image
-                                Source="background_nicaragua.png"
-                                Aspect="AspectFill"/>
-                        </Frame>
-                        <Label
-                            x:Name="NicaraguaTitle"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0.02,1,.1"
-                            Text="NICARAGUA"
-                            Style="{DynamicResource PrimaryTitle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                            Source="background_kenya.png"
+                            Aspect="AspectFill"/>
+                    </Frame>
+                    <Image
+                        x:Name="DownArrow"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.5,0.125,24,15"
+                        Margin="2"
+                        Source="down_arrow"
+                        Opacity="0"/>
+                    <Label
+                        x:Name="KenyaTitle"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,1,0.145"
+                        Text="KENYA"
+                        Style="{DynamicResource PrimaryTitle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Frame 
+                        x:Name="KenyaContent"
+                        Style="{StaticResource ContentBox}"
+                        Margin="20">
+                        <AbsoluteLayout.LayoutFlags>
+                            <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
+                                <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
+                                <OnIdiom.Phone>All</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutFlags>
+                        <AbsoluteLayout.LayoutBounds>
+                            <OnIdiom x:TypeArguments="Rectangle">
+                                <OnIdiom.Tablet>0.5,.9,460,460</OnIdiom.Tablet>
+                                <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutBounds>
+                        <StackLayout Padding="5">
+                            <Label 
+                                VerticalOptions="Start"
+                                Text="Through Fox River and MANNA Worldwide, God is providing primary education and nutrition centers in the villages of&#10;Bomani and Vipingo"
+                                Style="{StaticResource ContentText}"/>
+                            <AbsoluteLayout VerticalOptions="FillAndExpand">
+                                <Button
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,.5"
+                                    Text="Sponsor Children"
+                                    Style="{StaticResource Link}"
+                                    Clicked="SponsorChildrenClicked"/>
+                                <Button 
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,.75,1,.5"
+                                    Text="Change a Life"
+                                    Style="{StaticResource Link}"
+                                    Clicked="ChangeALifeClicked"/>
+                            </AbsoluteLayout>
+                        </StackLayout>
+                    </Frame>
+                </AbsoluteLayout>
+            </ContentView>
+            <ContentView 
+                x:Name="NicaraguaView"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.875, Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.875, Constant=0}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}">
+                <AbsoluteLayout Padding="-1,0,-1,0">
+                    <Frame
+                        x:Name="NicaraguaBackground"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        Style="{StaticResource BorderBox}"
+                        Opacity="0">
                         <Image
-                            x:Name="UpArrow"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0.5,0,0.1,0.1"
-                            Source="down_array.png"
-                            Aspect="AspectFit"
-                            Opacity="1"/>
-                        <Frame 
-                            x:Name="NicaraguaContent"
-                            Style="{StaticResource ContentBox}"
-                            Margin="20"
-                            Opacity="0">
-                            <AbsoluteLayout.LayoutFlags>
-                                <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
-                                    <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
-                                    <OnIdiom.Phone>All</OnIdiom.Phone>
-                                </OnIdiom>
-                            </AbsoluteLayout.LayoutFlags>
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom x:TypeArguments="Rectangle">
-                                    <OnIdiom.Tablet>0.5,.9,460,400</OnIdiom.Tablet>
-                                    <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
-                                </OnIdiom>
-                            </AbsoluteLayout.LayoutBounds>
-                            <StackLayout Padding="5">
-                                <Label 
-                                    VerticalOptions="Start"
-                                    Text="God has worked through Fox River and MANNA Worldwide to build a medical clinic in Las Esmeralda that serves hundreds of patients every month."
-                                    Style="{StaticResource ContentText}"/>
-                                <AbsoluteLayout VerticalOptions="FillAndExpand">
-                                    <Button 
-                                        AbsoluteLayout.LayoutFlags="All"
-                                        AbsoluteLayout.LayoutBounds="0,.5,1,.5"
-                                        Text="Change a Life"
-                                        Style="{StaticResource Link}"
-                                        Clicked="ChangeALifeClicked"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                    </AbsoluteLayout>
-                </ContentView>
-            
-            </StackLayout>
-        </ScrollView>
+                            Source="background_nicaragua"
+                            Aspect="AspectFill"/>
+                    </Frame>
+                    <Image
+                        x:Name="UpArrow"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.5,0,24,15"
+                        Margin="2"
+                        Source="up_arrow"/>
+                    <Label 
+                        x:Name="NicaraguaTitle" 
+                        AbsoluteLayout.LayoutFlags="All" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,0.145" 
+                        Text="NICARAGUA"
+                        Style="{StaticResource PrimaryTitle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Frame 
+                        x:Name="NicaraguaContent"
+                        Style="{StaticResource ContentBox}"
+                        Margin="20"
+                        Opacity="0">
+                        <AbsoluteLayout.LayoutFlags>
+                            <OnIdiom x:TypeArguments="AbsoluteLayoutFlags">
+                                <OnIdiom.Tablet>PositionProportional</OnIdiom.Tablet>
+                                <OnIdiom.Phone>All</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutFlags>
+                        <AbsoluteLayout.LayoutBounds>
+                            <OnIdiom x:TypeArguments="Rectangle">
+                                <OnIdiom.Tablet>0.5,.9,460,400</OnIdiom.Tablet>
+                                <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
+                            </OnIdiom>
+                        </AbsoluteLayout.LayoutBounds>
+                        <StackLayout Padding="5">
+                            <Label 
+                                VerticalOptions="Start"
+                                Text="God has worked through Fox River and MANNA Worldwide to build a medical clinic in Las Esmeralda that serves hundreds of patients every month."
+                                Style="{StaticResource ContentText}"/>
+                            <AbsoluteLayout VerticalOptions="FillAndExpand">
+                                <Button 
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,.5,1,.5"
+                                    Text="Change a Life"
+                                    Style="{StaticResource Link}"
+                                    Clicked="ChangeALifeClicked"/>
+                            </AbsoluteLayout>
+                        </StackLayout>
+                    </Frame>
+                </AbsoluteLayout>
+            </ContentView>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
