@@ -24,24 +24,6 @@
                             Source="background_kenya.png"
                             Aspect="AspectFill"/>
                     </Frame>
-                    <Image
-                        x:Name="DownArrow"
-                        AbsoluteLayout.LayoutFlags="PositionProportional"
-                        AbsoluteLayout.LayoutBounds="0.5,0.125,24,15"
-                        Margin="2"
-                        Source="down_arrow"
-                        Opacity="0"/>
-                    <Label
-                        x:Name="KenyaTitle"
-                        AbsoluteLayout.LayoutFlags="All"
-                        AbsoluteLayout.LayoutBounds="0,0,1,0.145"
-                        Text="KENYA"
-                        Style="{DynamicResource PrimaryTitle}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
-                        </Label.GestureRecognizers>
-                    </Label>
                     <Frame 
                         x:Name="KenyaContent"
                         Style="{StaticResource ContentBox}"
@@ -79,6 +61,24 @@
                             </AbsoluteLayout>
                         </StackLayout>
                     </Frame>
+                    <Label
+                        x:Name="KenyaTitle"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,1,0.145"
+                        Text="KENYA"
+                        Style="{DynamicResource PrimaryTitle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image
+                        x:Name="DownArrow"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.5,1,24,15"
+                        Margin="2"
+                        Source="down_arrow"
+                        Opacity="0"/>
                 </AbsoluteLayout>
             </ContentView>
             <ContentView 
@@ -102,7 +102,8 @@
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         AbsoluteLayout.LayoutBounds="0.5,0,24,15"
                         Margin="2"
-                        Source="up_arrow"/>
+                        Source="up_arrow"
+                        Aspect="Fill"/>
                     <Label 
                         x:Name="NicaraguaTitle" 
                         AbsoluteLayout.LayoutFlags="All" 
@@ -128,7 +129,7 @@
                         <AbsoluteLayout.LayoutBounds>
                             <OnIdiom x:TypeArguments="Rectangle">
                                 <OnIdiom.Tablet>0.5,.9,460,400</OnIdiom.Tablet>
-                                <OnIdiom.Phone>0,1,1,0.5</OnIdiom.Phone>
+                                <OnIdiom.Phone>0,0.93,1,0.5</OnIdiom.Phone>
                             </OnIdiom>
                         </AbsoluteLayout.LayoutBounds>
                         <StackLayout Padding="5">

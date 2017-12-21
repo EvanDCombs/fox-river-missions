@@ -104,10 +104,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\background_nicaragua.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\down_arrow.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\down_arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\up_arrow.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\up_arrow.png" />
   </ItemGroup>
   <Import Project="..\FoxRiver\FoxRiver.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

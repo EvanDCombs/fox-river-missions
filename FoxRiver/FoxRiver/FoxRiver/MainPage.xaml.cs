@@ -50,11 +50,11 @@ namespace FoxRiver
         {
             if (sender == KenyaTitle && openLocation == Locations.Nicaragua)
             {
-                OpenKenya();
+                OpenKenya(0);
             }
             else if (sender == NicaraguaTitle && openLocation == Locations.Kenya)
             {
-                OpenNicaragua();
+                OpenNicaragua(0);
             }
         }
         async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
@@ -67,7 +67,7 @@ namespace FoxRiver
                     if (sender == NicaraguaTitle && openLocation == Locations.Kenya && e.TotalY >= -(viewHeight * 0.825) && e.TotalY < 0)
                     {
                         KenyaView.TranslationY = e.TotalY;
-                        KenyaTitle.TranslationY = DownArrow.TranslationY = -e.TotalY;
+                        KenyaTitle.TranslationY = -e.TotalY;
                         KenyaBackground.Opacity = KenyaContent.Opacity = UpArrow.Opacity = 1 + percentageDragged;
 
                         NicaraguaView.TranslationY = e.TotalY;
@@ -76,7 +76,7 @@ namespace FoxRiver
                     else if (sender == KenyaTitle && openLocation == Locations.Nicaragua && e.TotalY <= (viewHeight * 0.825) && e.TotalY > 0)
                     {
                         KenyaView.TranslationY = (e.TotalY - (viewHeight * 0.825));
-                        KenyaTitle.TranslationY = DownArrow.TranslationY = -(e.TotalY - (viewHeight * 0.825));
+                        KenyaTitle.TranslationY = -(e.TotalY - (viewHeight * 0.825));
                         KenyaBackground.Opacity = KenyaContent.Opacity = UpArrow.Opacity = 0 + percentageDragged;
 
                         NicaraguaView.TranslationY = (e.TotalY - (viewHeight * 0.825));
@@ -87,24 +87,24 @@ namespace FoxRiver
                     Console.WriteLine(totalYDragged);
                     if (sender == NicaraguaTitle && openLocation == Locations.Kenya)
                     {
-                        if (totalYDragged <= -100)
+                        if (totalYDragged <= -75)
                         {
-                            OpenNicaragua();
+                            OpenNicaragua(percentageDragged);
                         }
                         else
                         {
-                            OpenKenya();
+                            OpenKenya(percentageDragged);
                         }
                     }
                     else if (sender == KenyaTitle && openLocation == Locations.Nicaragua)
                     {
-                        if (totalYDragged >= 100)
+                        if (totalYDragged >= 75)
                         {
-                            OpenKenya();
+                            OpenKenya(percentageDragged);
                         }
                         else
                         {
-                            OpenNicaragua();
+                            OpenNicaragua(percentageDragged);
                         }
                     }
                     break;
@@ -112,35 +112,41 @@ namespace FoxRiver
         }
         #endregion
         #region Animations
-        private void OpenKenya()
+        private void OpenKenya(double percentage)
         {
-            KenyaView.TranslateTo(0, 0, 500);
-            KenyaBackground.FadeTo(1, 500);
-            KenyaContent.FadeTo(1, 500);
-            KenyaTitle.TranslateTo(0, 0, 500);
-            DownArrow.FadeTo(0, 500);
-            DownArrow.TranslateTo(0, 0, 500);
+            uint length = (uint)(500 * (1 - Math.Abs(percentage)));
 
-            NicaraguaView.TranslateTo(0, 0, 500);
-            NicaraguaBackground.FadeTo(0, 500);
-            NicaraguaContent.FadeTo(0, 500);
-            UpArrow.FadeTo(1, 500);
+            //Animates Kenya Section
+            KenyaView.TranslateTo(0, 0, length);
+            KenyaTitle.TranslateTo(0, 0, length);
+            KenyaBackground.FadeTo(1, length);
+            KenyaContent.FadeTo(1, length);
+            DownArrow.FadeTo(0, length);
+
+            //Animates Nicaragua Section
+            NicaraguaView.TranslateTo(0, 0, length);
+            NicaraguaBackground.FadeTo(0, length);
+            NicaraguaContent.FadeTo(0, length);
+            UpArrow.FadeTo(1, length);
             
             openLocation = Locations.Kenya;
         }
-        private void OpenNicaragua()
+        private void OpenNicaragua(double percentage)
         {
-            KenyaView.TranslateTo(0, -(viewHeight * 0.825), 500);
-            KenyaBackground.FadeTo(0, 500);
-            KenyaContent.FadeTo(0, 500);
-            KenyaTitle.TranslateTo(0, (viewHeight * 0.825), 500);
-            DownArrow.FadeTo(1, 500);
-            DownArrow.TranslateTo(0, (viewHeight * 0.825), 500);
+            uint length = (uint)(500 * (1 - Math.Abs(percentage)));
 
-            NicaraguaView.TranslateTo(0, -(viewHeight * 0.825), 500);
-            NicaraguaBackground.FadeTo(1, 500);
-            NicaraguaContent.FadeTo(1, 500);
-            UpArrow.FadeTo(0, 500);
+            //Animates Kenya Section
+            KenyaView.TranslateTo(0, -(viewHeight * 0.825), length);
+            KenyaTitle.TranslateTo(0, (viewHeight * 0.825), length);
+            KenyaBackground.FadeTo(0, length);
+            KenyaContent.FadeTo(0, length);
+            DownArrow.FadeTo(1, length);
+
+            //Animates Nicaragua Section
+            NicaraguaView.TranslateTo(0, -(viewHeight * 0.825), length);
+            NicaraguaBackground.FadeTo(1, length);
+            NicaraguaContent.FadeTo(1, length);
+            UpArrow.FadeTo(0, length);
             
             openLocation = Locations.Nicaragua;
         }
