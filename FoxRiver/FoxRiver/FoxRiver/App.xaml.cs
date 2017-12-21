@@ -14,6 +14,7 @@ namespace FoxRiver
 			InitializeComponent();
 
             MainPage = new NavigationPage(new FoxRiver.MainPage());
+            MainPage.SetValue(NavigationPage.BarTextColorProperty, Color.White);
         }
 
 		protected override void OnStart ()
