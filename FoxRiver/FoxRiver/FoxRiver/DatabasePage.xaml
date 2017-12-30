@@ -44,17 +44,20 @@
                     Spacing="0"
                     AbsoluteLayout.LayoutFlags="All"
                     AbsoluteLayout.LayoutBounds="0,0,1,1">
-                    <cv:CarouselViewControl
-                        x:Name="ContentView"
+                    <!--cv:CarouselViewControl
+                        x:Name="ChildViewPager"
                         VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Orientation="Horizontal">
+                        HorizontalOptions="FillAndExpand">
                         <cv:CarouselViewControl.ItemTemplate>
                             <DataTemplate>
                                 <local:ChildView/>
                             </DataTemplate>
                         </cv:CarouselViewControl.ItemTemplate>
-                    </cv:CarouselViewControl>
+                    </cv:CarouselViewControl-->
+                    <local:ViewPager
+                        x:Name="ChildViewPager"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"/>
 
                     <AbsoluteLayout 
                         VerticalOptions="End"

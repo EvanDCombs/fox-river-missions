@@ -16,7 +16,14 @@ namespace FoxRiver
 		}
         async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DatabasePage());
+            try
+            {
+                await Navigation.PushAsync(new DatabasePage());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

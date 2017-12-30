@@ -67,13 +67,13 @@ namespace FoxRiver
         public string Hobbies { get; set; }
         #endregion
         #region Initialization
-        public Child() { }
-        public Child(string name, string school)
+        private Child() { }
+        private Child(string name, string school)
         {
             this.Name = name;
             this.School = school;
         }
-        public Child(JToken token)
+        private Child(JToken token)
         {
             token = token.First;
 
@@ -87,18 +87,24 @@ namespace FoxRiver
             this.Subject = GetArray(token, "subjects");
             this.Hobbies = GetArray(token, "hobbies");
             this.Image = (string)token.SelectToken("profile_picture");
+
+            Console.WriteLine(this.Name);
+        }
+        public static Child CreateChild(JToken token)
+        {
+            return new Child(token);
         }
         #endregion
         #region Methods
         private string GetArray(JToken token, string id)
         {
             JArray array = (JArray)token.SelectToken(id);
-            StringBuilder stringBuilder = null;
+            StringBuilder stringBuilder = new StringBuilder();
             foreach(JToken jtoken in array)
             {
                 if (stringBuilder == null)
                 {
-                    stringBuilder = new StringBuilder((string)jtoken.SelectToken("name"));
+                    stringBuilder = stringBuilder.Append((string)jtoken.SelectToken("name"));
                 }
                 else
                 {
