@@ -42,13 +42,13 @@
                             x:Name="name" 
                             VerticalOptions="Start"
                             HorizontalOptions="Center"
-                            Text="{Binding Name}"
+                            Text="Name"
                             Style="{StaticResource NamedText}"/>
                         <Label 
                             x:Name="school" 
                             VerticalOptions="Fill"
                             HorizontalOptions="Center"
-                            Text="{Binding School}"
+                            Text="School"
                             Style="{StaticResource NamedText}"/>
                         <Label 
                             x:Name="content" 

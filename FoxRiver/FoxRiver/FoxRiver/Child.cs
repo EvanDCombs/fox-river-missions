@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FoxRiver
 {
     public class Child : INotifyPropertyChanged
     {
+        #region Binded Properties
         private string name;
-        private string school;
-        private string image;
-
         public string Name
         {
             get { return name; }
@@ -20,6 +20,7 @@ namespace FoxRiver
                 NotifyPropertyChanged("Name");
             }
         }
+        private string school;
         public string School
         {
             get { return school; }
@@ -29,23 +30,90 @@ namespace FoxRiver
                 NotifyPropertyChanged("School");
             }
         }
+        private string image;
         public string Image
         {
             get { return image; }
             set
             {
-                image = value;
+                image = "http://students.hope.indibits.com/uploads/images/" + value + "_r.jpg";
                 NotifyPropertyChanged("Image");
             }
         }
-
-        public Child(string name, string school)
+        public string Content
+        {
+            get
+            {
+                StringBuilder builder = new StringBuilder("Grade: " + Grade);
+                builder.AppendLine("Birthday: " + Birthday);
+                builder.AppendLine("Sex: " + Sex);
+                builder.AppendLine("Hobbies: " + Hobbies);
+                builder.AppendLine("Fav. Subjects: " + Subject);
+                builder.AppendLine("Siblings: " + Siblings);
+                builder.AppendLine("Family Income: " + FamilyIncome);
+                return builder.ToString();
+            }
+            set { NotifyPropertyChanged("Content"); }
+        }
+        #endregion
+        #region Properties
+        public int Grade { get; set; }
+        private DateTime birthday;
+        public DateTime Birthday { get; set; }
+        public string Sex { get; set; }
+        public float FamilyIncome { get; set; }
+        public int Siblings { get; set; }
+        public string Subject { get; set; }
+        public string Hobbies { get; set; }
+        #endregion
+        #region Initialization
+        private Child() { }
+        private Child(string name, string school)
         {
             this.Name = name;
             this.School = school;
         }
+        private Child(JToken token)
+        {
+            token = token.First;
 
+            this.Name = (string)token.SelectToken("name");
+            this.School = token.SelectToken("school_id").ToString();
+            this.Grade = (int)token.SelectToken("class_id"); ;
+            DateTime.TryParse((string)token.SelectToken("date_of_birth"), out birthday);
+            this.Sex = (string)token.SelectToken("gender");
+            this.FamilyIncome = (float)token.SelectToken("family_home_info.family_monthly_income_usd");
+            this.Siblings = (int)token.SelectToken("family_home_info.number_of_siblings");
+            this.Subject = GetArray(token, "subjects");
+            this.Hobbies = GetArray(token, "hobbies");
+            this.Image = (string)token.SelectToken("profile_picture");
 
+            Console.WriteLine(this.Name);
+        }
+        public static Child CreateChild(JToken token)
+        {
+            return new Child(token);
+        }
+        #endregion
+        #region Methods
+        private string GetArray(JToken token, string id)
+        {
+            JArray array = (JArray)token.SelectToken(id);
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach(JToken jtoken in array)
+            {
+                if (stringBuilder == null)
+                {
+                    stringBuilder = stringBuilder.Append((string)jtoken.SelectToken("name"));
+                }
+                else
+                {
+                    stringBuilder.Append(", " + (string)jtoken.SelectToken("name"));
+                }
+            }
+            return stringBuilder.ToString();
+        }
+        #endregion
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
