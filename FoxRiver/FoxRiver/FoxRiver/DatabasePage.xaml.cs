@@ -13,12 +13,12 @@ namespace FoxRiver
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DatabasePage : ContentPage
 	{
-        //public ObservableCollection<Child> Children { get; set; }
+        public ObservableCollection<Child> Children { get; set; }
 
 		public DatabasePage ()
 		{
             NavigationPage.SetHasNavigationBar(this, false);
-            //Children = new ObservableCollection<Child>();
+            Children = new ObservableCollection<Child>();
             RetrieveChildren();
             try
             {
@@ -29,7 +29,7 @@ namespace FoxRiver
                 Console.WriteLine(ex);
             }
 
-            //ChildViewPager.ItemsSource = Children;
+            ChildViewPager.ItemsSource = Children;
 		}
         async void BackButtonClicked(object sender, EventArgs e)
         {
@@ -39,9 +39,10 @@ namespace FoxRiver
         private async Task RetrieveChildren()
         {
             List<Child> children = await DatabaseAPI.GetChildrenAsync();
-            if (ChildViewPager.SponsorChildren.Count <= 0)
+            if (Children.Count <= 0)
             {
-                ChildViewPager.SponsorChildren = children;
+                Children = new ObservableCollection<Child>(children);
+                ChildViewPager.ItemsSource = Children;
             }
         }
 

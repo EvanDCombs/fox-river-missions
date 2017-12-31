@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+
+using Xamarin.Forms;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -36,7 +39,7 @@ namespace FoxRiver
             get { return image; }
             set
             {
-                image = "http://students.hope.indibits.com/uploads/images/" + value + "_r.jpg";
+                image = value;
                 NotifyPropertyChanged("Image");
             }
         }
@@ -44,22 +47,22 @@ namespace FoxRiver
         {
             get
             {
-                StringBuilder builder = new StringBuilder("Grade: " + Grade);
-                builder.AppendLine("Birthday: " + Birthday);
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine("Grade: " + Grade);
+                builder.AppendLine("Birthday: " + birthday.ToShortDateString());
                 builder.AppendLine("Sex: " + Sex);
                 builder.AppendLine("Hobbies: " + Hobbies);
                 builder.AppendLine("Fav. Subjects: " + Subject);
                 builder.AppendLine("Siblings: " + Siblings);
-                builder.AppendLine("Family Income: " + FamilyIncome);
+                builder.AppendLine("Family Income: $" + FamilyIncome);
                 return builder.ToString();
             }
             set { NotifyPropertyChanged("Content"); }
         }
         #endregion
         #region Properties
-        public int Grade { get; set; }
+        public string Grade { get; set; }
         private DateTime birthday;
-        public DateTime Birthday { get; set; }
         public string Sex { get; set; }
         public float FamilyIncome { get; set; }
         public int Siblings { get; set; }
@@ -67,44 +70,57 @@ namespace FoxRiver
         public string Hobbies { get; set; }
         #endregion
         #region Initialization
-        private Child() { }
+        public Child() { }
         private Child(string name, string school)
         {
             this.Name = name;
             this.School = school;
         }
-        private Child(JToken token)
+        private Child(JToken token, Organization organization)
         {
             token = token.First;
 
             this.Name = (string)token.SelectToken("name");
-            this.School = token.SelectToken("school_id").ToString();
-            this.Grade = (int)token.SelectToken("class_id"); ;
+            this.School = SchoolSwitch((int)token.SelectToken("school_id"), organization);
+            this.Grade = GradeSwitch((int)token.SelectToken("class_id"), organization);
             DateTime.TryParse((string)token.SelectToken("date_of_birth"), out birthday);
             this.Sex = (string)token.SelectToken("gender");
             this.FamilyIncome = (float)token.SelectToken("family_home_info.family_monthly_income_usd");
             this.Siblings = (int)token.SelectToken("family_home_info.number_of_siblings");
             this.Subject = GetArray(token, "subjects");
             this.Hobbies = GetArray(token, "hobbies");
-            this.Image = (string)token.SelectToken("profile_picture");
+            this.Image = ImageSwitch((string)token.SelectToken("profile_picture"), organization);
+
 
             Console.WriteLine(this.Name);
         }
-        public static Child CreateChild(JToken token)
+        public static Child CreateChild(JToken token, Organization organization)
         {
-            return new Child(token);
+            return new Child(token, organization);
         }
         #endregion
         #region Methods
+        private string ImageSwitch(string id, Organization organization)
+        {
+            return organization == Organization.HopeFoundation ? "https://students.hope.indibits.com/uploads/images/" + id + "_r.jpg" : "https://students.ogh.indibits.com/uploads/images/" + id + "_r.jpg";
+        }
+        private string SchoolSwitch(int id, Organization organization)
+        {
+            return organization == Organization.HopeFoundation ? HopeSchools[id] : id.ToString();
+        }
+        private string GradeSwitch(int id, Organization organization)
+        {
+            return organization == Organization.HopeFoundation ? HopeGrades[id] : id.ToString();
+        }
         private string GetArray(JToken token, string id)
         {
             JArray array = (JArray)token.SelectToken(id);
             StringBuilder stringBuilder = new StringBuilder();
             foreach(JToken jtoken in array)
             {
-                if (stringBuilder == null)
+                if (stringBuilder.Length <= 0)
                 {
-                    stringBuilder = stringBuilder.Append((string)jtoken.SelectToken("name"));
+                    stringBuilder.Append((string)jtoken.SelectToken("name"));
                 }
                 else
                 {
@@ -123,6 +139,19 @@ namespace FoxRiver
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
+        #region Enums
+        public enum Organization
+        {
+            HopeFoundation,
+            Ogh
+        }
+        #endregion
+        #region Static Fields
+        private static string[] HopeSchools = { "New Life Academy", "Good News Academy", "Valerye McMillian" };
+        private static string[] HopeGrades = { "Preschool", "Kindergarten", "Kindergarten", "Kindergarten", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eight", "Freshman", "Sophomore", "Junior", "Senior" };
+        private static string[] OghSchools = { };
+        private static string[] OghGrades = { };
         #endregion
     }
 }

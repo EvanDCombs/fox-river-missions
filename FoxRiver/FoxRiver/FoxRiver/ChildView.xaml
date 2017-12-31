@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransforms="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:local="clr-namespace:FoxRiver"
              x:Class="FoxRiver.ChildView"
              BindingContext="local:Child">
@@ -11,8 +13,8 @@
         </OnIdiom>
     </ContentView.Padding>
     <ContentView.Content>
-        <AbsoluteLayout>
-            <Frame 
+        <AbsoluteLayout CompressedLayout.IsHeadless="True">
+            <Frame
                 Style="{StaticResource ChildBox}"
                 Padding="5">
                 <AbsoluteLayout.LayoutFlags>
@@ -29,10 +31,31 @@
                 </AbsoluteLayout.LayoutBounds>
                 <AbsoluteLayout>
                     <Frame 
+                        x:Name="PImage"
                         Style="{StaticResource ChildBox}"
                         AbsoluteLayout.LayoutFlags="All"
-                        AbsoluteLayout.LayoutBounds="0,0,1,.5">
-                        <Image x:Name="image"/>
+                        AbsoluteLayout.LayoutBounds="0,0,1,.5"
+                        Padding="0"
+                        Opacity="0">
+                        <AbsoluteLayout>
+                            <ffimage:CachedImage
+                                AbsoluteLayout.LayoutFlags="All"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                Source="{Binding Image}"
+                                Aspect="AspectFill"
+                                Finish="CachedImage_Finish">
+                                <ffimage:CachedImage.Transformations>
+                                    <fftransforms:BlurredTransformation Radius="5" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                            <Image 
+                                x:Name="ProfileImage"
+                                AbsoluteLayout.LayoutFlags="All"
+                                AbsoluteLayout.LayoutBounds=".5,0,1,1"
+                                Source="{Binding Image}"
+                                Aspect="AspectFit"
+                                Opacity="0"/>
+                        </AbsoluteLayout>
                     </Frame>
                     <StackLayout
                         AbsoluteLayout.LayoutFlags="All"
@@ -42,21 +65,21 @@
                             x:Name="name" 
                             VerticalOptions="Start"
                             HorizontalOptions="Center"
-                            Text="Name"
+                            Text="{Binding Name}"
                             Style="{StaticResource NamedText}"/>
                         <Label 
                             x:Name="school" 
                             VerticalOptions="Fill"
                             HorizontalOptions="Center"
-                            Text="School"
+                            Text="{Binding School}"
                             Style="{StaticResource NamedText}"/>
                         <Label 
                             x:Name="content" 
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Margin="2"
-                            Text="Content"
-                            Style="{StaticResource NamedText}"/>
+                            Text="{Binding Content}"
+                            Style="{StaticResource ContentText}"/>
                     </StackLayout>
                 </AbsoluteLayout>
             </Frame>

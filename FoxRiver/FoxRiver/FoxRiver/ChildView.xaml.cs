@@ -16,5 +16,11 @@ namespace FoxRiver
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void CachedImage_Finish(object sender, FFImageLoading.Forms.CachedImageEvents.FinishEventArgs e)
+        {
+            PImage.FadeTo(1, 150);
+            ProfileImage.FadeTo(1, 250);
+        }
+    }
 }

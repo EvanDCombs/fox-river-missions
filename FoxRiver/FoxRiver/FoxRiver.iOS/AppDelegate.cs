@@ -4,6 +4,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using CarouselView.FormsPlugin.iOS;
+using FFImageLoading.Forms.Touch;
 
 namespace FoxRiver.iOS
 {
@@ -24,6 +25,7 @@ namespace FoxRiver.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CarouselViewRenderer.Init();
+            CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

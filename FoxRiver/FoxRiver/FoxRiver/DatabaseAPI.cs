@@ -15,6 +15,16 @@ namespace FoxRiver
     {
         #region Static
         private static List<Child> children;
+        public static async Task<List<Child>> GetChildrenAsync(IProgress<Child> progress)
+        {
+            if (children == null)
+            {
+                DatabaseAPI api = new DatabaseAPI();
+                children = new List<Child>();
+                children = await api.RetrieveChildrenListAsync(progress);
+            }
+            return children;
+        }
         public static async Task<List<Child>> GetChildrenAsync()
         {
             if (children == null)
@@ -43,8 +53,29 @@ namespace FoxRiver
         {
             List<Child> children = new List<Child>();
 
+            
             children.AddRange(await RequestChildrenAsync(HOPE_ACTIVE_URL, HOPE_API_KEY, HopeActiveFilter));
             children.AddRange(await RequestChildrenAsync(OGH_ACTIVE_URL, OGH_API_KEY, OghFilter));
+
+            children.Shuffle();
+            return children;
+        }
+        private async Task<List<Child>> RetrieveChildrenListAsync(IProgress<Child> progress)
+        {
+            List<Child> children = new List<Child>();
+
+            RequestChildrenAsync(HOPE_ACTIVE_URL, HOPE_API_KEY, (token) => {
+                Child child = HopeActiveFilter(token);
+                DatabaseAPI.children.Add(child);
+                progress.Report(child);
+                return child;
+            });
+            RequestChildrenAsync(OGH_ACTIVE_URL, OGH_API_KEY, (token) => {
+                Child child = OghFilter(token);
+                DatabaseAPI.children.Add(child);
+                progress.Report(child);
+                return child;
+            });
 
             return children;
         }
@@ -104,7 +135,7 @@ namespace FoxRiver
             int grade = (int)token.First.SelectToken("class_id");
             if (grade == 1)
             {
-                return Child.CreateChild(token);
+                return Child.CreateChild(token, Child.Organization.HopeFoundation);
             }
             return null;
         }
@@ -114,21 +145,21 @@ namespace FoxRiver
             int grade = (int)token.First.SelectToken("class_id");
             if (school == 2 && grade >= 2)
             {
-                return Child.CreateChild(token);
+                return Child.CreateChild(token, Child.Organization.HopeFoundation);
             }
             else if (school == 3 && grade == 12)
             {
                 int primarySchool = (int)token.First.SelectToken("primary_school");
                 if (primarySchool == 3)
                 {
-                    return Child.CreateChild(token);
+                    return Child.CreateChild(token, Child.Organization.HopeFoundation);
                 }
             }
             return null;
         }
         private Child OghFilter(JToken token)
         {
-            return Child.CreateChild(token);
+            return Child.CreateChild(token, Child.Organization.Ogh);
         }
         #endregion
     }
