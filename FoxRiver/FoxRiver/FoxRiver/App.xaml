@@ -58,7 +58,7 @@
 
 
             <!--Title Styles-->
-            <Style x:Key="Title" TargetType="Label">
+            <Style x:Key="DatabaseTitle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="60"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
@@ -71,6 +71,40 @@
                         <OnIdiom x:TypeArguments="x:Double">
                             <OnIdiom.Tablet>70</OnIdiom.Tablet>
                             <OnIdiom.Phone>40</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <!--Text Styles-->
+            <Style x:Key="WhiteText" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                            <OnIdiom.Phone>13</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="NamedText" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>23</OnIdiom.Tablet>
+                            <OnIdiom.Phone>15</OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ContentText" TargetType="Label" BasedOn="{StaticResource NamedText}">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                            <OnIdiom.Phone>13</OnIdiom.Phone>
                         </OnIdiom>
                     </Setter.Value>
                 </Setter>

@@ -1,11 +1,14 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
+using FFImageLoading.Forms;
+using FFImageLoading.Forms.Droid;
+using FFImageLoading.Transformations;
 
 namespace FoxRiver.Droid
 {
@@ -20,6 +23,10 @@ namespace FoxRiver.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            CarouselViewRenderer.Init();
+            CachedImageRenderer.Init(false);
+            //var ignore = new CircleTransformation();
+
             LoadApplication(new App());
         }
     }

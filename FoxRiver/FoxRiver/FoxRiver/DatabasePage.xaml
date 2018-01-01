@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:local="clr-namespace:FoxRiver"
              x:Class="FoxRiver.DatabasePage">
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -25,7 +26,7 @@
                         AbsoluteLayout.LayoutFlags="All"
                         AbsoluteLayout.LayoutBounds=".5,.5,1,.6"
                         Text="KENYA"
-                        Style="{StaticResource Title}"/>
+                        Style="{StaticResource DatabaseTitle}"/>
                 </AbsoluteLayout>
                 <BoxView
                     HeightRequest="1"
@@ -44,9 +45,14 @@
                     AbsoluteLayout.LayoutFlags="All"
                     AbsoluteLayout.LayoutBounds="0,0,1,1">
                     <cv:CarouselViewControl
-                        x:Name="ContentView"
+                        x:Name="ChildViewPager"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand">
+                        <cv:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <local:ChildView/>
+                            </DataTemplate>
+                        </cv:CarouselViewControl.ItemTemplate>
                     </cv:CarouselViewControl>
 
                     <AbsoluteLayout 
@@ -54,8 +60,8 @@
                         HorizontalOptions="CenterAndExpand">
                         <AbsoluteLayout.Padding>
                             <OnIdiom x:TypeArguments="Thickness">
-                                <OnIdiom.Tablet>20,20,20,65</OnIdiom.Tablet>
-                                <OnIdiom.Phone>20,20,20,35</OnIdiom.Phone>
+                                <OnIdiom.Tablet>20,26,20,65</OnIdiom.Tablet>
+                                <OnIdiom.Phone>20,26,20,35</OnIdiom.Phone>
                             </OnIdiom>
                         </AbsoluteLayout.Padding>
                         <Frame Style="{StaticResource ScriptureBox}">

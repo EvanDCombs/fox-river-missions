@@ -40,7 +40,14 @@ namespace FoxRiver
         #region Interactions
         async void SponsorChildrenClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DatabasePage());
+            try
+            {
+                await Navigation.PushAsync(new DatabasePage());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
         async void ChangeALifeClicked(object sender, EventArgs e)
         {
