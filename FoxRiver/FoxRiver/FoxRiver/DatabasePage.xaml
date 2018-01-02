@@ -25,7 +25,7 @@
                     <Label
                         AbsoluteLayout.LayoutFlags="All"
                         AbsoluteLayout.LayoutBounds=".5,.5,1,.6"
-                        Text="KENYA"
+                        Text="Sponsor Children"
                         Style="{StaticResource DatabaseTitle}"/>
                 </AbsoluteLayout>
                 <BoxView
@@ -44,17 +44,36 @@
                     Spacing="0"
                     AbsoluteLayout.LayoutFlags="All"
                     AbsoluteLayout.LayoutBounds="0,0,1,1">
-                    <cv:CarouselViewControl
-                        x:Name="ChildViewPager"
+                    <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand">
-                        <cv:CarouselViewControl.ItemTemplate>
-                            <DataTemplate>
-                                <local:ChildView/>
-                            </DataTemplate>
-                        </cv:CarouselViewControl.ItemTemplate>
-                    </cv:CarouselViewControl>
-
+                        <ActivityIndicator
+                            x:Name="LoadingIndicator"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            AbsoluteLayout.LayoutBounds=".5,.5,32,32"
+                            Color="{StaticResource Secondary}"
+                            IsEnabled="True"
+                            IsVisible="True"
+                            IsRunning="True">
+                            <ActivityIndicator.Scale>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>3</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>2</OnIdiom.Phone>
+                                </OnIdiom>
+                            </ActivityIndicator.Scale>
+                        </ActivityIndicator>
+                        <cv:CarouselViewControl
+                            x:Name="ChildViewPager"
+                            AbsoluteLayout.LayoutFlags="All"
+                            AbsoluteLayout.LayoutBounds="0,0,1,1">
+                            <cv:CarouselViewControl.ItemTemplate>
+                                <DataTemplate>
+                                    <local:ChildView/>
+                                </DataTemplate>
+                            </cv:CarouselViewControl.ItemTemplate>
+                        </cv:CarouselViewControl>
+                    </AbsoluteLayout>
+                    
                     <AbsoluteLayout 
                         VerticalOptions="End"
                         HorizontalOptions="CenterAndExpand">
@@ -72,25 +91,34 @@
                                 </OnIdiom>
                             </AbsoluteLayout.LayoutFlags>
                             <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom x:TypeArguments="Rectangle">
-                                    <OnIdiom.Tablet>0.5,0.5,360,110</OnIdiom.Tablet>
-                                    <OnIdiom.Phone>0.5,0.5,1,1</OnIdiom.Phone>
-                                </OnIdiom>
+                                <OnPlatform x:TypeArguments="Rectangle">
+                                    <On Platform="iOS">
+                                        <On.Value>
+                                            <OnIdiom x:TypeArguments="Rectangle">
+                                                <OnIdiom.Tablet>0.5,0.5,360,110</OnIdiom.Tablet>
+                                                <OnIdiom.Phone>0.5,0.5,1,1</OnIdiom.Phone>
+                                            </OnIdiom>
+                                        </On.Value>
+                                    </On>
+                                    <On Platform="Android">
+                                        <On.Value>
+                                            <OnIdiom x:TypeArguments="Rectangle">
+                                                <OnIdiom.Tablet>0.5,0.5,360,110</OnIdiom.Tablet>
+                                                <OnIdiom.Phone>0.5,0.5,1,1</OnIdiom.Phone>
+                                            </OnIdiom>
+                                        </On.Value>
+                                    </On>
+                                </OnPlatform>
                             </AbsoluteLayout.LayoutBounds>
                             <StackLayout HeightRequest="110">
                                 <Label
                                     VerticalOptions="StartAndExpand"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="Whatever you did for one of the least of these brothers and sisters of mine, you did for me."
-                                    TextColor="Black"
-                                    FontSize="20"
-                                    HorizontalTextAlignment="Center"
-                                    LineBreakMode="WordWrap"/>
+                                    Style="{StaticResource Quote}"/>
                                 <Label
                                     Text="Mathew 25:40"
-                                    TextColor="{StaticResource QuoteGray}"
-                                    FontSize="16"
-                                    HorizontalTextAlignment="Center"/>
+                                    Style="{StaticResource Author}"/>
                             </StackLayout>
                         </Frame>
                     </AbsoluteLayout>

@@ -4,134 +4,314 @@
              x:Class="FoxRiver.App">
 	<Application.Resources>
 
-        <!-- Application resource dictionary -->
 
-        <ResourceDictionary>
+        <OnPlatform x:TypeArguments="ResourceDictionary">
 
-            <Color x:Key="Primary">#56C4C2</Color>
-            <Color x:Key="Primary_75">#BF56C4C2</Color>
-            <Color x:Key="Secondary">#003B4C</Color>
-            <Color x:Key="Secondary_60">#99003B4C</Color>
-            <Color x:Key="Secondary_75">#BF003B4C</Color>
-            <Color x:Key="Border">#A6A6A6</Color>
-            <Color x:Key="Transparent">#00000000</Color>
-            <Color x:Key="QuoteGray">#646464</Color>
+            <!-- iOS Resources -->
+            <OnPlatform.iOS>
+                <ResourceDictionary>
+
+                    <!-- iOS Colors -->
+                    <Color x:Key="Primary">#56C4C2</Color>
+                    <Color x:Key="Primary_75">#BF56C4C2</Color>
+                    <Color x:Key="Secondary">#003B4C</Color>
+                    <Color x:Key="Secondary_60">#99003B4C</Color>
+                    <Color x:Key="Secondary_75">#BF003B4C</Color>
+                    <Color x:Key="Border">#BFA6A6A6</Color>
+                    <Color x:Key="Transparent">#00000000</Color>
+                    <Color x:Key="QuoteGray">#646464</Color>
+
+                    <!-- iOS Application Styles -->
+                    <Style TargetType="Page" ApplyToDerivedTypes="True">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
+                    </Style>
+                    <Style TargetType="Button" ApplyToDerivedTypes="True">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}"/>
+                    </Style>
+
+                    <!-- iOS Text Style -->
+                    <Style x:Key="ContentText" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Gotham-Bold"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>25</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>15</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- iOS Link Style -->
+                    <Style x:Key="Link"  TargetType="Button" ApplyToDerivedTypes="True">
+                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Gotham-Bold"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>28</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>20</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- iOS Title Styles -->
+                    <Style x:Key="DatabaseTitle" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="VerticalTextAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="28"/>
+                        <Setter Property="FontFamily" Value="CORBEL"/>
+                    </Style>
+                    <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource DatabaseTitle}">
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Corbel-Bold"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>70</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>40</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- iOS Text Styles -->
+                    <Style x:Key="WhiteText" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="FontFamily" Value="Gotham-Book"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>13</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="NamedText" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>23</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>14</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="ChildContentText" TargetType="Label" BasedOn="{StaticResource NamedText}">
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>11</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="Quote" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="LineBreakMode" Value="WordWrap"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>16</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="Author" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="TextColor" Value="{StaticResource QuoteGray}"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>16</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>12</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- iOS ContentBox Stlyes -->
+                    <Style x:Key="BorderBox" TargetType="Frame">
+                        <Setter Property="OutlineColor" Value="{StaticResource Border}"/>
+                        <Setter Property="HasShadow" Value="False"/>
+                        <Setter Property="CornerRadius" Value="0"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                    <Style x:Key="ContentBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary_60}"/>
+                    </Style>
+                    <Style x:Key="ScriptureBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Primary_75}"/>
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="CornerRadius" Value="1"/>
+                    </Style>
+
+                    <Style x:Key="ChildBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary_75}"/>
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+
+                </ResourceDictionary>
+            </OnPlatform.iOS>
 
 
-            <!--Application Styles-->
-            <Style TargetType="Page" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
-            </Style>
-            <Style TargetType="Button" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="{StaticResource Transparent}"/>
-            </Style>
-            
-            <!--Text Style-->
-            <Style x:Key="ContentText" TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>28</OnIdiom.Tablet>
-                            <OnIdiom.Phone>20</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+            <!-- Android Resources -->
+            <OnPlatform.Android>
+                <ResourceDictionary>
+
+                    <!-- Android Colors -->
+                    <Color x:Key="Primary">#56C4C2</Color>
+                    <Color x:Key="Primary_75">#BF56C4C2</Color>
+                    <Color x:Key="Secondary">#003B4C</Color>
+                    <Color x:Key="Secondary_60">#99003B4C</Color>
+                    <Color x:Key="Secondary_75">#BF003B4C</Color>
+                    <Color x:Key="Border">#BFA6A6A6</Color>
+                    <Color x:Key="Transparent">#00000000</Color>
+                    <Color x:Key="QuoteGray">#646464</Color>
+
+                    <!-- Android Application Styles -->
+                    <Style TargetType="Page" ApplyToDerivedTypes="True">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
+                    </Style>
+                    <Style TargetType="Button" ApplyToDerivedTypes="True">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}"/>
+                    </Style>
+
+                    <!-- Android Text Style -->
+                    <Style x:Key="ContentText" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="GOTHAM-BOLD.TTF#GOTHAM-BOLD"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>25</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>22</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- Android Link Style -->
+                    <Style x:Key="Link"  TargetType="Button" ApplyToDerivedTypes="True">
+                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="GOTHAM-BOLD.TTF#GOTHAM-BOLD"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>28</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>21</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- Android Title Styles -->
+                    <Style x:Key="DatabaseTitle" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="VerticalTextAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="28"/>
+                        <Setter Property="FontFamily" Value="CORBEL.TTF#CORBEL"/>
+                    </Style>
+                    <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource DatabaseTitle}">
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Corbel Bold.ttf#Corbel Bold"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>70</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>40</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- Android Text Styles -->
+                    <Style x:Key="WhiteText" TargetType="Label">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="FontFamily" Value="Gotham-Book.otf#Gotham-Book"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>13</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="NamedText" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>23</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>16</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="ChildContentText" TargetType="Label" BasedOn="{StaticResource NamedText}">
+                        <Setter Property="FontSize">
+                            <Setter.Value>
+                                <OnIdiom x:TypeArguments="x:Double">
+                                    <OnIdiom.Tablet>18</OnIdiom.Tablet>
+                                    <OnIdiom.Phone>14</OnIdiom.Phone>
+                                </OnIdiom>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="Quote" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="LineBreakMode" Value="WordWrap"/>
+                    </Style>
+                    <Style x:Key="Author" TargetType="Label" BasedOn="{StaticResource WhiteText}">
+                        <Setter Property="TextColor" Value="{StaticResource QuoteGray}"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    </Style>
+
+                    <!-- Android ContentBox Stlyes -->
+                    <Style x:Key="BorderBox" TargetType="Frame">
+                        <Setter Property="OutlineColor" Value="{StaticResource Border}"/>
+                        <Setter Property="HasShadow" Value="False"/>
+                        <Setter Property="CornerRadius" Value="0"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                    <Style x:Key="ContentBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary_60}"/>
+                    </Style>
+                    <Style x:Key="ScriptureBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Primary_75}"/>
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="CornerRadius" Value="1"/>
+                    </Style>
+
+                    <Style x:Key="ChildBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary_75}"/>
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
 
 
-            <!--Link Style-->
-            <Style x:Key="Link"  TargetType="Button" ApplyToDerivedTypes="True">
-                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>28</OnIdiom.Tablet>
-                            <OnIdiom.Phone>20</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+                </ResourceDictionary>
+            </OnPlatform.Android>
 
-
-            <!--Title Styles-->
-            <Style x:Key="DatabaseTitle" TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="60"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-            </Style>
-            <Style x:Key="PrimaryTitle" TargetType="Label" BasedOn="{StaticResource Title}">
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>70</OnIdiom.Tablet>
-                            <OnIdiom.Phone>40</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            
-            <!--Text Styles-->
-            <Style x:Key="WhiteText" TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>18</OnIdiom.Tablet>
-                            <OnIdiom.Phone>13</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="NamedText" TargetType="Label" BasedOn="{StaticResource WhiteText}">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>23</OnIdiom.Tablet>
-                            <OnIdiom.Phone>15</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="ContentText" TargetType="Label" BasedOn="{StaticResource NamedText}">
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double">
-                            <OnIdiom.Tablet>18</OnIdiom.Tablet>
-                            <OnIdiom.Phone>13</OnIdiom.Phone>
-                        </OnIdiom>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <!--ContentBox Stlyes-->
-            <Style x:Key="BorderBox" TargetType="Frame">
-                <Setter Property="OutlineColor" Value="{StaticResource Border}"/>
-                <Setter Property="HasShadow" Value="False"/>
-                <Setter Property="CornerRadius" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
-            </Style>
-            <Style x:Key="ContentBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
-                <Setter Property="BackgroundColor" Value="{StaticResource Secondary_60}"/>
-            </Style>
-            <Style x:Key="ScriptureBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
-                <Setter Property="BackgroundColor" Value="{StaticResource Primary_75}"/>
-                <Setter Property="Padding" Value="5"/>
-                <Setter Property="CornerRadius" Value="1"/>
-            </Style>
-
-            <Style x:Key="ChildBox" TargetType="Frame" BasedOn="{StaticResource BorderBox}">
-                <Setter Property="BackgroundColor" Value="{StaticResource Secondary_75}"/>
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-
-        </ResourceDictionary>
+        </OnPlatform>
 
     </Application.Resources>
 </Application>

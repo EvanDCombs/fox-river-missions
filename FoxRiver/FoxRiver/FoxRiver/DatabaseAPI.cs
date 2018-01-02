@@ -36,7 +36,7 @@ namespace FoxRiver
         }
         #endregion
         #region Const Fiels
-        private const string HOPE_ACTIVE_URL = "http://students.hope.indibits.com/api/students?sponsored=false&status=Active";
+        private const string HOPE_ACTIVE_URL = "https://students.hope.indibits.com/api/students?sponsored=false&status=Active";
         private const string HOPE_API_KEY = "44864d9389298d9b23b38c9d203715ae94fa58a3";
 
         private const string OGH_ACTIVE_URL = "https://students.ogh.indibits.com/api/students?sponsored=false&status=Active";

@@ -38,6 +38,12 @@
                         Padding="0"
                         Opacity="0">
                         <AbsoluteLayout>
+                            <AbsoluteLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android" Value="1,1,1,1"/>
+                                    <On Platform="iOS" Value="0,0,0,0"/>
+                                </OnPlatform>
+                            </AbsoluteLayout.Padding>
                             <ffimage:CachedImage
                                 AbsoluteLayout.LayoutFlags="All"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -79,7 +85,7 @@
                             HorizontalOptions="FillAndExpand"
                             Margin="2"
                             Text="{Binding Content}"
-                            Style="{StaticResource ContentText}"/>
+                            Style="{StaticResource ChildContentText}"/>
                     </StackLayout>
                 </AbsoluteLayout>
             </Frame>

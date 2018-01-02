@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,18 @@ using CarouselView.FormsPlugin.Abstractions;
 namespace FoxRiver
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DatabasePage : ContentPage
-	{
+	public partial class DatabasePage : ContentPage, INotifyPropertyChanged
+    {
+        private bool isLoading = true;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                NotifyPropertyChanged("IsLoading");
+            }
+        }
         public ObservableCollection<Child> Children { get; set; }
 
 		public DatabasePage ()
@@ -20,14 +31,8 @@ namespace FoxRiver
             NavigationPage.SetHasNavigationBar(this, false);
             Children = new ObservableCollection<Child>();
             RetrieveChildren();
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            InitializeComponent();
+            IsLoading = true;
 
             ChildViewPager.ItemsSource = Children;
 		}
@@ -43,8 +48,19 @@ namespace FoxRiver
             {
                 Children = new ObservableCollection<Child>(children);
                 ChildViewPager.ItemsSource = Children;
+                LoadingIndicator.IsVisible = false;
             }
         }
 
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        #endregion
     }
 }
