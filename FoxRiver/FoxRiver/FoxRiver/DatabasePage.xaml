@@ -111,6 +111,19 @@
                                 </OnPlatform>
                             </AbsoluteLayout.LayoutBounds>
                             <StackLayout HeightRequest="110">
+                                <StackLayout.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="iOS">
+                                            <On.Value>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Tablet>110</OnIdiom.Tablet>
+                                                    <OnIdiom.Phone>85</OnIdiom.Phone>
+                                                </OnIdiom>
+                                            </On.Value>
+                                        </On>
+                                        <On Platform="Android" Value="110"/>
+                                    </OnPlatform>
+                                </StackLayout.HeightRequest>
                                 <Label
                                     VerticalOptions="StartAndExpand"
                                     HorizontalOptions="CenterAndExpand"
