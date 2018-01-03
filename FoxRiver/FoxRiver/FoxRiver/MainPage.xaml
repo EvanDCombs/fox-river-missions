@@ -143,7 +143,7 @@
                             <AbsoluteLayout VerticalOptions="FillAndExpand">
                                 <Button 
                                     AbsoluteLayout.LayoutFlags="All"
-                                    AbsoluteLayout.LayoutBounds="0,.5,1,.5"
+                                    AbsoluteLayout.LayoutBounds="0,.5,1,.6"
                                     Text="Change a Life"
                                     Style="{StaticResource Link}"
                                     Clicked="ChangeALifeClicked"/>
